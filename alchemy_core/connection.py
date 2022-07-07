@@ -1,3 +1,7 @@
+'''
+Create SQLAlchemy engine
+'''
+
 import sqlalchemy
 
 # Check Version
@@ -7,10 +11,7 @@ class Connection:
     
     def __init__(self):
         try:
-            self.engine = sqlalchemy.create_engine("sqlite:///sqlite.db")
-            print("Created SQLAlchemy Engine")
-            print(self.engine)
-            
+            self.engine = sqlalchemy.create_engine("sqlite:///sqlite.db", echo = True)
         except Exception as e:
             print(f"Error: {e}")
             
