@@ -1,2 +1,3 @@
 sql/
 .spyproject
+__pycache__/
