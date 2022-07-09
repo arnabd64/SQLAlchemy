@@ -21,7 +21,7 @@ class TableCreation:
                         Column('lastname', String(200), nullable = False),
                         Column('email', String(100), nullable = False, unique = True),
                         Column('phone', String(10), nullable = False, unique = True),
-                        Column('classroom', String(36), nullable = False)
+                        Column('classroom', Integer, ForeignKey("Classroom.room_number", onupdate = 'CASCADE'))
                         )
         try:
             self.meta.create_all(self.engine)
@@ -36,7 +36,8 @@ class TableCreation:
                         Column('firstname', String(200), nullable = False),
                         Column('lastname', String(200), nullable = False),
                         Column('email', String(100), nullable = False, unique = True),
-                        Column('subject', String(100), nullable = False)
+                        Column('subject', String(100), nullable = False),
+                        Column('classroom', Integer, ForeignKey("Classroom.room_number", onupdate = 'CASCADE'))
                         )
         try:
             self.meta.create_all(self.engine)
@@ -50,7 +51,6 @@ class TableCreation:
                         Column('id', String(36), primary_key = True),
                         Column('class', Integer, nullable = False),
                         Column('section', String(1), nullable = False),
-                        Column('class_teacher', String(36), nullable = False, unique = True),
                         Column('room_number', Integer, unique = True, nullable = False),
                         Column('max_capacity', Integer)
                         )
